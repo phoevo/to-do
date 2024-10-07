@@ -32,7 +32,7 @@ sidebar{
 
 #top{
   background-color: whitesmoke;
-  width: 80vw;
+  width: 70vw;
   height: 10vh;
   display: flex;
   align-items: center;
@@ -142,8 +142,28 @@ section{
 
 }
 
-#task{
-  background-color: rgb(230, 230, 230);
+
+#taskbar{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;  
+  
+}
+
+#taskTab{
+  display: flex;
+  width: 70vw;
+  height: 50px;
+  border: 2px solid black;
+  border-radius: 8px;
+  gap: 20px;
+}
+
+
+
+#title i{
+  font-style: normal;
+  font-weight: 600;
 }
 
 

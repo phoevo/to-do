@@ -1,13 +1,13 @@
 import {addTask} from "./tasks";
+import { createTask } from "./tasks";
+
+
 
 const homePage = () => {
-
 
     const page = document.querySelector('section');
     const overlay = document.createElement('div');
     const popup = document.createElement('div');
-    
-    
 
     const newBtn = document.querySelector('#newBtn');
     newBtn.addEventListener("click", function(){
@@ -18,10 +18,9 @@ const homePage = () => {
     function taskWindow() { 
         overlay.id = 'overlay';
         document.body.appendChild(overlay);
-
         popup.id = 'popup';
         popup.innerHTML = 
-            `<div id ="popupDiv">
+            `<form id ="popupDiv">
                 <p id="popupTitle">Create a Task<p>
                     <label for = "taskTitle">Title</label><br><br>
                     <input type="text" id="taskTitle"><br><br>
@@ -40,22 +39,18 @@ const homePage = () => {
                     </select><br>
 
                     <div id = "popupButtons">
-                        <button id="closeButton">Close</button>
+                        <button type = "button" id="closeButton">Close</button>
                         <input type="submit" value="Add" id="submitBtn"></input>
                     </div>
-                </div>`;
-        document.body.appendChild(popup);
+            </form>`;
+            document.body.appendChild(popup);
 
-        const submitBtn = document.querySelector("#submitBtn")
-        submitBtn.addEventListener("click", function(){
+        const submitBtn = document.querySelector("#popupDiv")
+        submitBtn.addEventListener("submit", function(){
+            event.preventDefault();
             addTask();
-            
-
+            hidePopup();
         })
-            
-         
-        
-       
 
         page.appendChild(overlay);
         page.appendChild(popup);
@@ -63,20 +58,14 @@ const homePage = () => {
         popup.style.display = 'block';
         overlay.style.display = 'block';
 
-      
-
-
-        
-    
-
-        // Function to hide the popup
         function hidePopup() {
             popup.style.display = 'none';
             overlay.style.display = 'none';
         }
 
-    overlay.addEventListener('click', hidePopup);
-    document.querySelector('#closeButton').addEventListener("click", hidePopup);
+        overlay.addEventListener('click', hidePopup);
+        document.querySelector('#closeButton').addEventListener('click', hidePopup);
+
     
     }
 }

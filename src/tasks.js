@@ -1,9 +1,5 @@
 import homePage from "./home";
 
-const tasksPage = () => {
-    addTask();
-}
-
 const myTasks = [];
 
 function Tasks(title, description, dueDate, priority){
@@ -21,26 +17,111 @@ function addTask() {
     let newTask = new Tasks(title, description, dueDate, priority);
     console.log("task added");
     myTasks.push(newTask);
+    console.log(myTasks);
+    createTask();
 
 }
 
 
-
-
-   
-
-
-
-
-
 function createTask(){
-    
+    let taskbar = document.querySelector('#taskbar');
+    taskbar.innerHTML = "";
+    for (let i = 0; i < myTasks.length; i++){
+        let task = myTasks[i];
+        let taskTab = document.createElement("div");
+        taskTab.setAttribute("class", "taskTab");
+        taskTab.innerHTML =
+        `<div id="taskTab">
+
+            <label for= "title">Title</label>
+            <p class="title">${task.title}</p>
+
+            <label for= "description">Description</label>
+            <p class = "description" >${task.description}</p>
+
+            <p class = "dueDate" >${task.dueDate}</p>
+            <p class = "priority" >${task.priority}</p>
+            <button id= "editBtn" >Edit</button>
+            <button class="removeBtn" >Remove</button>
+            <p class = "indexNum" >${i}</p>
+        </div>`;
 
 
+        taskbar.appendChild(taskTab);
+
+        let removeBtn = taskTab.querySelector('.removeBtn');
+        removeBtn.addEventListener('click', function() {
+            removeTask(i); 
+        });
+        
+        taskTab.style.backgroundColor = "rgb(230, 230, 230)";
+        console.log(i);
+       
+        
     }
+
+}
+
+function removeTask(index) {
+    console.log(myTasks[index]);  // Logs the task to be removed
+
+    // Remove the task from the array
+    myTasks.splice(index, 1);
+
+    // If there are no tasks left after removal, show "No tasks"
+    if (myTasks.length === 0) {
+        document.querySelector('#taskbar').innerHTML = "No tasks";
+    } else {
+        // Otherwise, re-render the tasks list
+        createTask();
+    }
+}
+
+
+
+/*let removeBtn = document.querySelector("removeBtn");
+    removeBtn.addEventListener("click", function(index){
+        console.log(myTasks[index]);
+        if(myTasks.length > 1){
+            myTasks.splice(index, 1);
+            createTask();
+       }
+       else if(myTasks.length >= 0){
+        myTasks.length = 0;
+        taskbar.innerHTML = "No tasks";
+       }
+       
+       
+    })*/
+
+
+
+/*function removeTask(index){
+    console.log(myTasks[index]);
+        if(myTasks.length > 1){
+            myTasks.splice(index, 1);
+            createTask();
+       }
+       else if(myTasks.length = 0){
+        myTasks.length = 0;
+        taskbar.innerHTML = "No tasks";
+       }
+    
+}*/
+
+
+
+
+
+
+
+
+
 
 
 
 
 
 export {addTask};
+export {createTask};
+export {removeTask};
