@@ -3,6 +3,7 @@ import { createTask } from "./tasks";
 
 
 
+
 const homePage = () => {
 
     const page = document.querySelector('section');
@@ -29,7 +30,7 @@ const homePage = () => {
                     <input type="text" id="taskDescription"><br><br>
 
                     <label for = "taskDueDate">For when?</label><br><br>
-                    <input type="text" id="taskDueDate"><br><br>
+                    <input type="date" id="taskDueDate"><br><br>
 
                     <label for = "taskPriority">...and its priority</label>
                     <select name="Due Date" id="taskPriority">

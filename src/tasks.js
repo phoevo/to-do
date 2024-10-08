@@ -2,6 +2,8 @@ import homePage from "./home";
 
 const myTasks = [];
 
+
+
 function Tasks(title, description, dueDate, priority){
     this.title = title;
     this.description = description;
@@ -21,6 +23,7 @@ function addTask() {
     createTask();
 
 }
+
 
 
 function createTask(){
@@ -63,16 +66,12 @@ function createTask(){
 }
 
 function removeTask(index) {
-    console.log(myTasks[index]);  // Logs the task to be removed
-
-    // Remove the task from the array
+    console.log(myTasks[index]); 
     myTasks.splice(index, 1);
 
-    // If there are no tasks left after removal, show "No tasks"
     if (myTasks.length === 0) {
         document.querySelector('#taskbar').innerHTML = "No tasks";
     } else {
-        // Otherwise, re-render the tasks list
         createTask();
     }
 }
@@ -108,14 +107,6 @@ function removeTask(index) {
        }
     
 }*/
-
-
-
-
-
-
-
-
 
 
 

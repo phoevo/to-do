@@ -11,15 +11,24 @@ sidebar{
   display: flex;
 }
 
-#sidebar-buttons{
+#sidebar{
   display: flex;
   align-items: center;
   flex-direction: column;
+  border-radius: 8px;
   width: 20vw;
   height: 100vh;
-  gap: 10px;
-  background-color: rgb(230, 230, 230);
+  gap: 20px;
+  background-color: gainsboro;
 }
+
+#sidebar button{
+  border: none;
+  border-radius: 8px;
+  font-size: .6em;
+  background-color: gainsboro;
+}
+
 
 #todayBtn, #soonBtn, #futureBtn{
   display: flex;
