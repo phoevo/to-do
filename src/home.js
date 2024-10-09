@@ -14,6 +14,32 @@ const homePage = () => {
 
 
     const newBtn = document.querySelector('#newBtn');
+    newBtn.addEventListener("mouseover", newBtnHover, false);
+    newBtn.addEventListener("mouseout", newBtnHoverAfter, false);
+    const newText = document.querySelector('#newText');
+    const plus = document.querySelector('#plusSymbol');
+    newText.style.opacity = "0";
+    plus.style.transition ="200ms";
+    
+    
+
+    function newBtnHover(){ 
+        newBtn.style.width = "7rem";
+        newBtn.style.transition = "200ms";
+        newText.innerHTML = "New";
+        newText.style.opacity = "1";
+        plus.style.transform = "rotate(90deg)";
+        newBtn.appendChild(newText);
+    }
+
+    function newBtnHoverAfter(){  
+        newBtn.style.width = "2.5rem";
+        newText.style.opacity = "0";
+        plus.style.transform = "rotate(0deg)";       
+        
+
+    } 
+
     newBtn.addEventListener("click", function(){
         taskWindow();
     })
@@ -24,7 +50,7 @@ const homePage = () => {
         popup.id = 'popup';
         popup.innerHTML = 
             `<form id ="popupDiv">
-                <p id="popupTitle">Create a Task<p>
+                <p id="popupTitle">New Task<p>
                     <label for = "taskTitle">Title</label><br><br>
                     <input type="text" id="taskTitle"><br><br>
 
@@ -48,13 +74,7 @@ const homePage = () => {
             </form>`;
             document.body.appendChild(popup);
 
-        const submitBtn = document.querySelector("#popupDiv")
-
-        console.log("todayTask is " + todayTask.length);
-        console.log("soonTask is " + soonTask.length);
-    
-
-
+        const submitBtn = document.querySelector("#popupDiv");
         submitBtn.addEventListener("submit", function(){
             event.preventDefault();
             const dueDate = document.querySelector("#taskDueDate").value; 
@@ -75,14 +95,13 @@ const homePage = () => {
             let placement;
             if (daysDifference === 0) {
                 placement = "Today"; 
-                todayBtn.style.backgroundColor = 'rgb(255, 70, 0)'; // Change to orange
-                todayBtn.style.transition = 'background-color 0.5s'; // Smooth transition
+                todayBtn.style.backgroundColor = 'rgb(255, 70, 0)'; 
+                todayBtn.style.transition = 'background-color 0.5s'; 
                 
                 
                 
-                // Set a timeout to revert the color after flashing
                 setTimeout(() => {
-                    todayBtn.style.backgroundColor = "whitesmoke"; // Revert to original color
+                    todayBtn.style.backgroundColor = "whitesmoke"; 
                 }, 200);
 
 
@@ -112,11 +131,19 @@ const homePage = () => {
 
             const notification = document.createElement('p');
             notification.setAttribute("id", "notification");
-            notification.innerHTML = `Task added to ${placement}` ;
+            notification.innerHTML = `Task added to ${placement}`;
+            
             top.appendChild(notification);
+            notification.style.transition = "opacity 1s";
+            notification.style.opacity = "1";
+
+            setTimeout(() => {
+                notification.style.opacity = "0";
+            }, 2000); 
+
             setTimeout(() => {
                 notification.remove();
-             }, 2000);
+             }, 3000);
 
 
             todayTaskCounter.innerHTML = todayTask.length;   

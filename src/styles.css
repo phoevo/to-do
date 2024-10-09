@@ -62,7 +62,13 @@ sidebar{
 }
 
 #newBtn{
-  width: 7rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  padding-left: 10px;
+  padding-top: 2px;
+  width: 2.5rem;
   height: 2.5rem;
   background-color: rgb(255, 70, 0);
   border: none;
@@ -72,11 +78,8 @@ sidebar{
   font-size: 1.5em;
 }
 
-#newBtn:hover{
-  color: rgb(255, 70, 0);
-  background-color: whitesmoke;
-  border: 2px solid rgb(255, 70, 0);;
-
+#plusSymbol {
+  transition: transform 0.5s ease-in-out; 
 }
 
 #notification{
@@ -88,6 +91,7 @@ sidebar{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
 }
 
 #popup {
@@ -102,6 +106,7 @@ sidebar{
   z-index: 1000;
   font-weight: 500;
   font-size: 1em;
+  border-radius: 10px;
 }
 
 
@@ -135,9 +140,7 @@ sidebar{
 }
 
 #closeButton:hover{
-  color: rgb(255, 70, 0);
-  background-color: whitesmoke;
-  border: 2px solid rgb(255, 70, 0);
+  background-color: rgb(255, 100, 0);
 }
 
 #submitBtn{
@@ -153,9 +156,7 @@ sidebar{
 }
 
 #submitBtn:hover{
-  color: rgb(255, 70, 0);
-  background-color: whitesmoke;
-  border: 2px solid rgb(255, 70, 0);
+ background-color: rgb(255, 100, 0);
 }
 
 
@@ -182,18 +183,48 @@ section{
 
 #taskTab{
   display: flex;
+  flex-wrap: wrap;
   width: 70vw;
-  height: 50px;
+  padding: 10px;
   border: 2px solid black;
   border-radius: 8px;
   gap: 20px;
+  align-items: center;
 }
 
+.taskItem {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
 
+.title, .description{
+  margin: 1;
+}
+
+.dueDate, .priority, .removeBtn, .indexNum{
+  margin-left: auto;
+}
 
 #title i{
   font-style: normal;
   font-weight: 600;
+}
+
+.removeBtn{
+  width: 4rem;
+  height: 1.5rem;
+  background-color: rgb(255, 70, 0);
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-family: 'Helvetica';
+  font-size: .2m;
+ 
+}
+
+.removeBtn:hover{
+  background-color: rgb(255, 100, 0);
 }
 
 

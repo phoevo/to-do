@@ -4,6 +4,7 @@ let currentActiveTaskArray = todayTask;
 
 const sideBar = () => {
 
+
     const todayBtn = document.querySelector('#todayBtn');
     const soonBtn = document.querySelector('#soonBtn');
     const futureBtn = document.querySelector('#futureBtn');
@@ -16,9 +17,13 @@ const sideBar = () => {
     title.innerHTML = "Today";
     todayBtn.style.backgroundColor = "whitesmoke";
     currentActiveTaskArray = todayTask;
-    todayTaskCounter.innerHTML = "";
-    soonTaskCounter.innerHTML = "";
-    futureTaskCounter.innerHTML = "";
+   // todayTaskCounter.innerHTML = "";
+    //soonTaskCounter.innerHTML = "";
+    //futureTaskCounter.innerHTML = "";
+
+    updateCounters();
+
+    createTask(currentActiveTaskArray);
    
    
 
