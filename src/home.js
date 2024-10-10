@@ -1,4 +1,4 @@
-import { currentActiveTaskArray, updateCounters } from './sidebar.js';
+import { currentActiveTaskArray, updateCounters, currentBtn } from './sidebar.js';
 import {Tasks, todayTask, soonTask, futureTask, myTasks, createTask, addTask, categorizeTask } from './tasks.js';  
 
 
@@ -46,7 +46,6 @@ const homePage = () => {
 
     function taskWindow() { 
         overlay.id = 'overlay';
-        document.body.appendChild(overlay);
         popup.id = 'popup';
         popup.innerHTML = 
             `<form id ="popupDiv">
@@ -60,7 +59,7 @@ const homePage = () => {
                     <label for = "taskDueDate">For when?</label><br><br>
                     <input type="date" id="taskDueDate" required><br><br>
 
-                    <label for = "taskPriority">...and its priority</label>
+                    <label for = "taskPriority">Priority</label><br>
                     <select name="Due Date" id="taskPriority">
                          <option value="Low">Low</option>
                          <option value="Medium">Medium</option>
@@ -72,10 +71,18 @@ const homePage = () => {
                         <input type="submit" value="Add" id="submitBtn"></input>
                     </div>
             </form>`;
+            document.body.appendChild(overlay);
             document.body.appendChild(popup);
 
+            setTimeout(() => {
+                overlay.style.opacity = '1';
+                overlay.style.visibility = 'visible';
+                popup.style.opacity = '1';
+                popup.style.visibility = 'visible';
+            },0);
+
         const submitBtn = document.querySelector("#popupDiv");
-        submitBtn.addEventListener("submit", function(){
+        submitBtn.addEventListener("submit", function(event){
             event.preventDefault();
             const dueDate = document.querySelector("#taskDueDate").value; 
             const todayTaskCounter = document.querySelector('#todayTaskCounter');
@@ -98,11 +105,14 @@ const homePage = () => {
                 todayBtn.style.backgroundColor = 'rgb(255, 70, 0)'; 
                 todayBtn.style.transition = 'background-color 0.5s'; 
                 
-                
-                
                 setTimeout(() => {
-                    todayBtn.style.backgroundColor = "whitesmoke"; 
-                }, 200);
+                    if (currentBtn === "todayBtn") {
+                        todayBtn.style.backgroundColor = "whitesmoke";
+                    } else {
+                        todayBtn.style.backgroundColor = "gainsboro";
+                    }
+                }, 200); 
+                
 
 
 
@@ -113,7 +123,11 @@ const homePage = () => {
                 soonTaskCounter.innerHTML++;
                 
                 setTimeout(() => {
-                    soonBtn.style.backgroundColor = "gainsboro"; 
+                    if (currentBtn === "soonBtn") {
+                        soonBtn.style.backgroundColor = "whitesmoke";
+                    } else {
+                        soonBtn.style.backgroundColor = "gainsboro";
+                    }
                 }, 200);
 
 
@@ -124,7 +138,11 @@ const homePage = () => {
                 futureTaskCounter.innerHTML++;
                 
                 setTimeout(() => {
-                    futureBtn.style.backgroundColor = "gainsboro"; 
+                    if (currentBtn === "futureBtn") {
+                        futureBtn.style.backgroundColor = "whitesmoke";
+                    } else {
+                        futureBtn.style.backgroundColor = "gainsboro";
+                    }
                 }, 200);
 
             }
@@ -174,8 +192,20 @@ const homePage = () => {
         overlay.style.display = 'block';
 
         function hidePopup() {
-            popup.style.display = 'none';
-            overlay.style.display = 'none';
+                overlay.style.opacity = '0';
+                popup.style.opacity = '0';
+
+            setTimeout(() => {
+                
+                overlay.style.visibility = 'hidden';
+                popup.style.visibility = 'hidden';
+                popup.style.display = 'none';
+                overlay.style.display = 'none';
+                overlay.remove(); 
+                popup.remove(); 
+            }, 300);
+            
+            
         }
 
         overlay.addEventListener('click', hidePopup);

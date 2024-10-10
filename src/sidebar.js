@@ -1,6 +1,8 @@
 import { todayTask, soonTask, futureTask, createTask } from './tasks.js';
 
 let currentActiveTaskArray = todayTask;
+let currentBtn = "todayBtn";
+
 
 const sideBar = () => {
 
@@ -17,12 +19,8 @@ const sideBar = () => {
     title.innerHTML = "Today";
     todayBtn.style.backgroundColor = "whitesmoke";
     currentActiveTaskArray = todayTask;
-   // todayTaskCounter.innerHTML = "";
-    //soonTaskCounter.innerHTML = "";
-    //futureTaskCounter.innerHTML = "";
 
     updateCounters();
-
     createTask(currentActiveTaskArray);
    
    
@@ -60,6 +58,8 @@ const sideBar = () => {
         currentActiveTaskArray = todayTask;  
         createTask(todayTask);
         updateCounters();
+        currentBtn = "todayBtn";
+        console.log(currentBtn);
        
         
     });
@@ -71,6 +71,8 @@ const sideBar = () => {
         currentActiveTaskArray = soonTask;  
         createTask(soonTask);
         updateCounters();
+        currentBtn = "soonBtn";
+        console.log(currentBtn);
     });
 
     futureBtn.addEventListener("click", function() {
@@ -80,11 +82,18 @@ const sideBar = () => {
         currentActiveTaskArray = futureTask;  
         createTask(futureTask);
         updateCounters();
+        currentBtn = "futureBtn";
+        console.log(currentBtn);
     });
+    
+
+    
+    
 
 };
 
+
 export default sideBar; 
-export {currentActiveTaskArray};
+export {currentActiveTaskArray, currentBtn};
 
 
