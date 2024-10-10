@@ -7,16 +7,12 @@ const todayTask = [];
 const soonTask = [];
 const futureTask = [];
 
-// Load tasks from local storage
 const loadedTasks = loadTasks();
 
-// Load the tasks into the arrays
 loadedTasks.todayTask.forEach(task => todayTask.push(task));
 loadedTasks.soonTask.forEach(task => soonTask.push(task));
 loadedTasks.futureTask.forEach(task => futureTask.push(task));
 
-// Set the current active task array
-//currentActiveTaskArray = todayTask;
 
 
 
@@ -154,8 +150,8 @@ function removeTask(index, taskArray) {
     const soonTaskCounter = document.querySelector('#soonTaskCounter');
     const futureTaskCounter = document.querySelector('#futureTaskCounter');
         
-    todayTaskCounter.innerHTML = todayTask.length || "";  // Show counter or empty string
-    soonTaskCounter.innerHTML = soonTask.length || "";    // Show counter or empty string
+    todayTaskCounter.innerHTML = todayTask.length || "";  
+    soonTaskCounter.innerHTML = soonTask.length || "";    
     futureTaskCounter.innerHTML = futureTask.length || "";
 
 }
@@ -163,4 +159,4 @@ function removeTask(index, taskArray) {
 
 
 
-export { Tasks, addTask, todayTask, soonTask, futureTask, myTasks, createTask, categorizeTask };  // <<-- Export functions and task arrays
+export { Tasks, addTask, todayTask, soonTask, futureTask, myTasks, createTask, categorizeTask };  

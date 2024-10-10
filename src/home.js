@@ -1,5 +1,5 @@
 import { currentActiveTaskArray, updateCounters, currentBtn } from './sidebar.js';
-import {Tasks, todayTask, soonTask, futureTask, myTasks, createTask, addTask, categorizeTask } from './tasks.js';  
+import {todayTask, soonTask, futureTask, addTask, categorizeTask } from './tasks.js';  
 
 
 const homePage = () => {
